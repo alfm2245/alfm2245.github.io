@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(32, 33, 33);
+    color: rgb(255, 255, 255); /* Set all text to white */
+    animation: fadeIn 0.4s ease-in; /* Add fade-in animation */
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+p {
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+/* Ensure links are also white */
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline; /* Add underline to links */
+}
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
