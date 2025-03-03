@@ -2,24 +2,53 @@ body {
     background-color: rgb(32, 33, 33);
     color: rgb(255, 255, 255); /* Set all text to white */
     animation: fadeIn 0.4s ease-in; /* Add fade-in animation */
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
 }
 
 h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(255, 255, 255);
     text-align: center;
+    font-size: 2.5em;
+    margin: 0.5em 0;
 }
 
 p {
-    font-family: system-ui, sans-serif;
-    font-size: 20px;
+    font-size: 1em;
     color: rgb(255, 255, 255);
+    margin: 0.5em 20px;
 }
 
-/* Ensure links are also white */
 a {
     color: rgb(255, 255, 255);
     text-decoration: underline; /* Add underline to links */
+    margin: 0 10px;
+}
+
+.location {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.links a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.section-title {
+    font-size: 1.75em;
+    margin-left: 20px;
+}
+
+.section-link {
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.indent {
+    margin-left: 35px;
 }
 
 /* Define the fade-in animation */
@@ -29,5 +58,52 @@ a {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+}
+
+.wave {
+    display: inline-block;
+    animation: wave 1s infinite;
+}
+
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 0.9em;
+        margin: 0.5em 10px;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+        margin-left: 10px;
+    }
+
+    .section-link {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .indent {
+        margin-left: 20px;
+    }
+
+    .links a {
+        margin: 0 5px;
     }
 }
