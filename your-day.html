@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your day</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>  
+    <header>
+        <h1 id="current-date"></h1>
+       <center><h2>how was <i>your day?</i></h2></center>
+       <hr width="250px">
+    </header>
+    <main>
+        <form action="/submit-your-day" method="post">
+            <label for="notes">Let it all out:</label><br>
+            <textarea id="notes" name="notes" rows="4" cols="50" placeholder="spill"></textarea>
+
+            <br><br>
+
+            <button type="submit">Submit</button>
+            <div id="posts"></div>
+        </form>
+    <hr width="250px">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        <span id="texts">what did you eat? did you mess up in an exam? did you deal with a jerk nuts? did you meet the love of your life? wanna go insane? want to run a marathon? learning a new language? fighting a dragon later? perhaps befriending him? preparing for a test?</span>
+    </main>
+<center><a href="https://www.linkedin.com/in/alfredo-martinez-64aa4a249/">alfredo martinez 2025</a></center>
+<script>
+const d = new Date();
+document.getElementById("current-date").innerHTML = d.toDateString();
+
+const notes = document.getElementById("notes");
+const postsDiv = document.getElementById("posts");
+
+// Load saved note draft
+notes.value = localStorage.getItem("notes") || "";
+
+// Load and display all posted notes
+function loadPosts() {
+    const posts = JSON.parse(localStorage.getItem("postedNotes") || "[]");
+    postsDiv.innerHTML = posts.map(post => 
+        `<div style="margin-bottom:10px;">
+            <strong>${post.date}</strong><br>
+            <span>${post.text}</span>
+        </div>`
+    ).join("");
+}
+loadPosts();
+
+// Save note as user types
+notes.addEventListener("input", () => {
+    localStorage.setItem("notes", notes.value);
+});
+
+// Handle form submit
+document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const posts = JSON.parse(localStorage.getItem("postedNotes") || "[]");
+    const now = new Date();
+    posts.push({
+        date: now.toLocaleString(),
+        text: notes.value
+    });
+    localStorage.setItem("postedNotes", JSON.stringify(posts));
+    notes.value = "";
+    localStorage.removeItem("notes");
+    loadPosts();
+});
+
+// Add a all must pass button to clear the notes
+const allmustpassBtn = document.createElement("button");
+allmustpassBtn.type = "button";
+allmustpassBtn.textContent = "all must pass";
+allmustpassBtn.onclick = function() {
+    localStorage.removeItem("postedNotes");
+    postsDiv.innerHTML = "";
+    notes.value = "";
+    localStorage.removeItem("notes");
+};
+allmustpassBtn.style.marginTop = "-60px";
+
+document.querySelector("form").appendChild(allmustpassBtn);
+
+// marquee text loop
+const texts = document.getElementById("texts");
+const messages = ["you are not alone", "this too shall pass", "breathe in, breathe out", "one day at a time", "you are enough", "stay strong", "keep going", "believe in yourself"  
+];
+</script>
