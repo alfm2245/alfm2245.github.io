@@ -1,0 +1,125 @@
+:root {
+  --bg: #121212;
+  --surface: #ffffff;
+  --text: #ffffff;
+  --muted: #636363;
+  --accent: #175cd3;
+  --border: #dededb;
+
+  --max-width: 70rem;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.top-container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--surface);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+
+}
+
+.about-me-container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--surface);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.bottom-container {
+  width: min(25% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--surface);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+   display: flex;
+  margin-bottom: 20px;
+   flex-direction: column;
+}
+
+.experience-container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--surface);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+   display: flex;
+  margin-bottom: 20px;
+   flex-direction: column;
+}
+
+.education-container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--surface);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+   display: flex;
+  margin-bottom: 20px;
+   flex-direction: column;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 768px){}
+  .container {
+    flex-direction: column; 
+  }
+
+.projects-container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--surface);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+   display: flex;
+  margin-bottom: 20px;
+   flex-direction: column;
+}
+.button {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  color: white;
+  background: var(--accent);
+  border-radius: 0.4rem;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.p {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
