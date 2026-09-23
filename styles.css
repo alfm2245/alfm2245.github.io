@@ -12,13 +12,21 @@
   --space-3: 1.5rem;
   --space-4: 2.5rem;
   --space-5: 4rem;
+
+  --font-ubuntu-light: "Ubuntu", sans-serif;
+  --font-ubuntu-regular: "Ubuntu", sans-serif;
+  --font-ubuntu-bold: "Ubuntu", sans-serif;
+  --font-ubuntu-light-italic: "Ubuntu", sans-serif;
+  --font-ubuntu-regular-italic: "Ubuntu", sans-serif;
+  --font-ubuntu-medium-italic: "Ubuntu", sans-serif;
+  --font-ubuntu-bold-italic: "Ubuntu", sans-serif;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-ubuntu-regular);
   line-height: 1.6;
 }
 
@@ -123,3 +131,45 @@ button:focus-visible {
   margin-bottom: var(--space-2);
 }
 
+/* Ubuntu Font */
+.ubuntu-light {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ubuntu-regular {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-bold {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-light-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ubuntu-regular-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-medium-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ubuntu-bold-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
