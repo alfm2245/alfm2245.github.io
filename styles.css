@@ -1,6 +1,6 @@
 :root {
   --bg: #121212;
-  --surface: #ffffff;
+  --surface: #1e1f20;
   --text: #ffffff;
   --muted: #636363;
   --accent: #175cd3;
@@ -220,6 +220,106 @@ button:focus-visible {
   margin-bottom: var(--space-2);
 }
 
+.booking-heading {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  background: var(--muted);
+  padding: var(--space-4);
+  background-color: #1e1f20;
+  border-radius: 0.5rem;
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+/* calendar */
+.calendar-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  border: 1px solid var(--muted);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: var(--surface);
+  background-color: #1e1f20;
+}
+
+/* Header Styling */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background-color: #1e1f20;
+  border-bottom: 1px solid #333;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #ffffff;
+}
+
+.nav-btn {
+  background: none;
+  border: 1px solid #333;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: #ffffff;
+}
+
+.nav-btn:hover {
+  background-color: #333;
+}
+
+/* The 7-Column Grid Layout */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 1rem;
+  gap: 4px;
+}
+
+/* Day Names Layout (Sun - Sat) */
+.day-name {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #ffffff;
+  padding: 0.5rem 0;
+}
+
+/* Base Style for Every Date Cell */
+.day {
+  aspect-ratio: 1; /* Ensures cells remain perfectly square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.day:hover:not(.empty) {
+  background-color: #333  ;
+}
+
+/* Style for Empty Grid Fillers */
+.day.empty {
+  cursor: default;
+}
+
+/* Highlight Style for the Current Day */
+.day.today {
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+}
+
 /* Ubuntu Font */
 .ubuntu-light {
   font-family: "Ubuntu", sans-serif;
@@ -261,4 +361,160 @@ button:focus-visible {
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   font-style: italic;
+}
+
+/* Booking Calendar Styles */
+
+/* Days with bookings - highlighted styling */
+.day.has-bookings {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  font-weight: 600;
+  position: relative;
+}
+
+.day.has-bookings:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Booking indicator badge */
+.booking-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Day number when bookings are present */
+.day-number {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Booking Details Modal */
+.booking-details {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.booking-details::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Booking details title */
+#booking-date-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.75rem;
+}
+
+/* Individual booking item */
+.booking-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid #3b82f6;
+}
+
+.booking-time {
+  font-weight: 600;
+  color: #3b82f6;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.booking-guest {
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+.booking-email {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+.booking-notes {
+  background: #ffffff;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  border-left: 2px solid #f59e0b;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.booking-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+}
+
+.booking-status.confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.booking-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.booking-status.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #1e293b;
 }
