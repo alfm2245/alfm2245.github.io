@@ -1,0 +1,41 @@
+---
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/' || currentPath === '';
+const isBlog = currentPath.startsWith('/blog');
+---
+
+<header class="navbar">
+  <div class="nav-brand">
+    <a href="/">
+      <h1>Alfredo Martinez</h1>
+    </a>
+  </div>
+
+  <div class="nav-menu">
+    <nav>
+      <ul class="nav-links">
+        <li>
+          <a href="/" class={`nav-link ${isHome ? 'active' : ''}`}>Home</a>
+        </li>
+        <li>
+          <a href="/blog" class={`nav-link ${isBlog ? 'active' : ''}`}>Blog</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/alfredomartinez2245/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+        <img src="/InBug-White.png" alt="LinkedIn" width="20" height="20" />
+      </a>
+      <a href="https://www.github.com/alfm2245/" target="_blank" rel="noopener noreferrer" title="GitHub">
+        <img src="/GitHub_Invertocat_White.png" alt="GitHub" width="20" height="20" />
+      </a>
+      <a href="mailto:amlf2245@duck.com" title="Email me">
+        <img src="/mail_24dp_EFEFEF_FILL0_wght400_GRAD0_opsz24.png" alt="Email" width="20" height="20" />
+      </a>
+      <a href="https://alfrode.substack.com/" target="_blank" rel="noopener noreferrer" title="Substack">
+        <img src="/substack.png" alt="Substack" width="20" height="20" />
+      </a>
+    </div>
+  </div>
+</header>

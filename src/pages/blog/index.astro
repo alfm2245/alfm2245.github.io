@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout
+  title="Blog | Alfredo Martinez"
+  description="Articles, notes, and technical breakdowns by Alfredo Martinez."
+>
+  <Navbar />
+  <main>
+    <section class="blog-container">
+      <h1 class="section-header">Blog</h1>
+      <p style="color: #a3a3a3; margin-top: -0.5rem; margin-bottom: 1.5rem;">
+        Thoughts, project write-ups, and notes on Operations Management, data analytics, and software.
+      </p>
+
+      {posts.length === 0 ? (
+        <p>No posts published yet. Check back soon!</p>
+      ) : (
+        <div class="blog-list">
+          {posts.map((post) => {
+            const formattedDate = new Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            }).format(post.data.pubDate);
+
+            return (
+              <a href={`/blog/${post.id}`} class="blog-card">
+                <div class="blog-card-header">
+                  <h2>{post.data.title}</h2>
+                  <time class="blog-card-date" datetime={post.data.pubDate.toISOString()}>
+                    {formattedDate}
+                  </time>
+                </div>
+                <p class="blog-card-desc">{post.data.description}</p>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="blog-tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="blog-tag">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </section>
+  </main>
+
+  <footer class="bottom-container">
+    <p style="color: #a3a3a3; text-align: center; margin: 0;">
+      Alfredo Martinez &copy; {new Date().getFullYear()}
+    </p>
+  </footer>
+</Layout>

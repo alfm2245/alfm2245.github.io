@@ -1,0 +1,54 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+}
+
+const { title, description, pubDate, tags = [] } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(pubDate);
+---
+
+<Layout title={`${title} | Alfredo Martinez`} description={description}>
+  <Navbar />
+  <main>
+    <article class="blog-container">
+      <a href="/blog" class="back-link">
+        &larr; Back to all posts
+      </a>
+
+      <header class="post-header">
+        <h1>{title}</h1>
+        <div class="post-meta">
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+          {tags.length > 0 && (
+            <div class="blog-tags">
+              {tags.map((tag) => (
+                <span class="blog-tag">#{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </header>
+
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+  </main>
+  <footer class="bottom-container">
+    <p style="color: #a3a3a3; text-align: center; margin: 0;">
+      Alfredo Martinez &copy; {new Date().getFullYear()}
+    </p>
+  </footer>
+</Layout>

@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+---
+
+<Layout
+  title="Alfredo Martinez"
+  description="Operations Management and Information Systems student and professional portfolio."
+>
+  <Navbar />
+
+  <main>
+    <!-- About Me Section -->
+    <section class="about-me-container">
+      <h1 class="section-header">About Me</h1>
+      <p>
+        I'm a student majoring in Operations Management and Information Systems, with a passion for implementing technology to make business processes better.
+      </p>
+      <p>
+        After that, I'm also a person who's passionate about the world around me, and someone who looks to learn in whatever space I end up in!
+      </p>
+      <p>
+      </p>
+    </section>
+
+    <!-- Latest Blog Posts Section -->
+    {recentPosts.length > 0 && (
+      <section class="blog-container">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;">
+          <h1 class="section-header" style="margin-bottom: 0;">Latest from the Blog</h1>
+          <a href="/blog" style="color: var(--accent); text-decoration: none; font-weight: 500;">
+            View all posts &rarr;
+          </a>
+        </div>
+        <div class="blog-list" style="margin-top: 1rem;">
+          {recentPosts.map((post) => {
+            const formattedDate = new Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            }).format(post.data.pubDate);
+
+            return (
+              <a href={`/blog/${post.id}`} class="blog-card">
+                <div class="blog-card-header">
+                  <h2>{post.data.title}</h2>
+                  <time class="blog-card-date" datetime={post.data.pubDate.toISOString()}>
+                    {formattedDate}
+                  </time>
+                </div>
+                <p class="blog-card-desc">{post.data.description}</p>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="blog-tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="blog-tag">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- Education Section -->
+    <section class="education-container">
+      <h1 class="section-header">Education</h1>
+      <h2 class="item-title">Bachelor of Science in Operations Management and Information Systems</h2>
+      <p class="item-subtitle">Northern Illinois University</p>
+      <p class="item-date">August 2024 - May 2027</p>
+      <ul>
+        <li>3.0 GPA</li>
+        <li>Member of OMIS Ignite, Association of Supply Chain and NIU ACM chapter</li>
+      </ul>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-container">
+      <h1 class="section-header">Experience</h1>
+      <h2 class="item-title">Student Manager</h2>
+      <p class="item-subtitle">Northern Illinois University</p>
+      <p class="item-date">October 2024 - Present</p>
+      <ul>
+        <li>Managing and guiding a team of 15-20 students in a variety of environments, including opening, closing and special events</li>
+        <li>Ensuring that all team members are trained and equipped to provide excellent customer service to <b>4,260</b> students living on campus</li>
+        <li>Improved closing times by 15% by providing all students with a clear understanding of their responsibilities and expectations</li>
+      </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-container">
+      <h1 class="section-header">Projects</h1>
+
+      <div class="project-entry" style="margin-bottom: 1.5rem;">
+        <h2 class="item-title">2026 HAVI Forecasting Challenge</h2>
+        <p class="item-date">March 2026</p>
+        <ul>
+          <li>Developed an end-to-end predictive machine learning pipeline to forecast quick-service restaurant (QSR) product demand across 15 restaurants and 50 unique menu items for the final quarter of 2026 (October–December)</li>
+          <li>Engineered custom time-series features (e.g., historical lag variables, rolling means, seasonal indicators) to capture complex, item-level demand patterns</li>
+          <li>Trained and tuned LightGBM / gradient boosted decision trees to optimize cross-validation performance across high-volume time-series data</li>
+          <li>Achieved a 15% improvement in forecasting accuracy compared to baseline models, resulting in more efficient inventory management and reduced waste</li>
+        </ul>
+      </div>
+
+      <div class="project-entry" style="margin-bottom: 1.5rem;">
+        <h2 class="item-title">SnackSnack</h2>
+        <p class="item-date">July 2026</p>
+        <ul>
+          <li>Architected relational database schemas, custom Row Level Security (RLS) policies, and production deployment (snack-snack.com)</li>
+          <li>Analyzed user interaction data to optimize the charts engine and improve overall user experience</li>
+        </ul>
+      </div>
+
+      <div class="project-entry">
+        <h2 class="item-title">Customer Segmentation & Transaction Analysis project</h2>
+        <p class="item-date">September 2026</p>
+        <ul>
+          <li>Engineered a local data pipeline using Docker and PostgreSQL to ingest and aggregate 1.85 million fake credit card transactions</li>
+          <li>Applied K-Means clustering via Scikit-Learn to extract 4 actionable customer personas based on transaction frequency, average ticket size, and monetary value.</li>
+          <li>Designed an executive Tableau dashboard contrasting segment revenue against system load to inform product marketing and risk monitoring strategies</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom-container">
+    <p style="color: #ccc; text-align: center; margin: 0;">
+      Updated as of October 2026
+    </p>
+  </footer>
+</Layout>
