@@ -90,6 +90,20 @@ a {
 }
 
 /* Navbar */
+.cloud-banner {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+  height: clamp(9rem, 20vw, 16rem);
+  background-color: #1673bb;
+  background-image: url('/halftone-clouds.jpg');
+  background-position: center 45%;
+  background-size: cover;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
 .navbar {
   width: min(100% - 2rem, var(--max-width));
   margin-inline: auto;
@@ -164,6 +178,12 @@ a {
 }
 
 @media (max-width: 768px) {
+  .cloud-banner {
+    width: min(100% - 1rem, var(--max-width));
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-1);
+  }
+
   .navbar {
     width: min(100% - 1rem, var(--max-width));
     padding: 0.75rem 1rem;
