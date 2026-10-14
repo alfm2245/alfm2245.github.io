@@ -128,8 +128,18 @@ a {
 }
 
 .nav-brand a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   text-decoration: none;
   color: var(--text);
+}
+
+.nav-favicon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .nav-menu {
