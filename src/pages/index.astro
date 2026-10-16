@@ -24,8 +24,8 @@ const recentPosts = (await getCollection('blog'))
       <p>
         After that, I'm also a person who's passionate about the world around me, and someone who looks to learn in whatever space I end up in!
       </p>
-      <p>
-      </p>
+      <div style="margin-top: 0.5rem;">
+      </div>
     </section>
 
     <!-- Latest Blog Posts Section -->
@@ -126,6 +126,65 @@ const recentPosts = (await getCollection('blog'))
           <li>Designed an executive Tableau dashboard contrasting segment revenue against system load to inform product marketing and risk monitoring strategies</li>
         </ul>
       </div>
+    </section>
+
+    <!-- Schedule a Meeting Section -->
+    <section class="meeting-container" id="schedule">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;">
+        <h1 class="section-header" style="margin-bottom: 0;">Schedule a Meeting</h1>
+        <a
+          href="https://cal.com/alfredo-xpq4zf"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color: var(--accent); text-decoration: none; font-weight: 500;"
+        >
+          Open in Cal.com &rarr;
+        </a>
+      </div>
+      <p style="color: var(--muted); margin-top: 0.5rem; margin-bottom: 1rem;">
+        Want to connect about operations, data projects, or opportunities? Pick a time below to set up a meeting with me.
+      </p>
+      <div style="width: 100%; min-height: 450px; overflow: scroll;" id="my-cal-inline"></div>
+      <script is:inline type="text/javascript">
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () { p(api, arguments); };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "schedule", { origin: "https://cal.com" });
+        Cal.ns.schedule("inline", {
+          elementOrSelector: "#my-cal-inline",
+          config: { layout: "month_view", theme: "dark" },
+          calLink: "alfredo-xpq4zf",
+        });
+        Cal.ns.schedule("ui", {
+          theme: "dark",
+          styles: { branding: { brandColor: "#3b82f6" } },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      </script>
     </section>
   </main>
 

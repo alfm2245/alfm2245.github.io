@@ -64,6 +64,7 @@ a {
 .experience-container,
 .projects-container,
 .blog-container,
+.meeting-container,
 .bottom-container {
   width: min(100% - 2rem, var(--max-width));
   margin-inline: auto;
@@ -82,6 +83,7 @@ a {
   .experience-container,
   .projects-container,
   .blog-container,
+  .meeting-container,
   .bottom-container {
     width: min(100% - 1rem, var(--max-width));
     padding: 1rem;
